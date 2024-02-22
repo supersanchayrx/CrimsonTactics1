@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: 31740641d3cd07749a8ecbf8b4dbb3a3
+  productGUID: fc8830fec5015c84e8fc272eea158da9
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -750,10 +750,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: f4d78745-1de6-4693-83b0-2de41c105fd5
+  cloudProjectId: bf2c86d4-e52f-4254-b8b5-1b06c9863b1a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: CrimsonTactics 2024-02-22_21-31-38
+  projectName: CrimsonTactics
   organizationId: supermanrx
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

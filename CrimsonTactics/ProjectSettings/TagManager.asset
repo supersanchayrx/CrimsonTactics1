@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tiles
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - grid
   - Water
   - UI
   - 
