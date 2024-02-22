@@ -9,7 +9,7 @@ public class playerMovement : MonoBehaviour
     //Transform mouseHover;
     [SerializeField] float speed, rotVelocity;
     public mousseSelector tileSelectorScript;
-    public Transform mouseHoverer;
+    //public Transform mouseHoverer;
     private Vector3 lastMousePos, lastPosition;
     private float rotSpeed;
     public string currentTileInfoString;
@@ -52,7 +52,7 @@ public class playerMovement : MonoBehaviour
         currentTileInfoString = lastPosition.ToString();
 
 
-        if (!anim.GetBool("isWalking") && Input.GetKeyDown(KeyCode.F) && ((tileSelectorScript.TileSelected.z != transform.position.z) || (tileSelectorScript.TileSelected.x != transform.position.x)))
+        if (!anim.GetBool("isWalking") && Input.GetMouseButtonDown(0) && ((tileSelectorScript.TileSelected.z != transform.position.z) || (tileSelectorScript.TileSelected.x != transform.position.x)))
         {
             anim.SetBool("isWalking", true);
         }
@@ -106,7 +106,7 @@ public class playerMovement : MonoBehaviour
 
     void UnlockMouseCursor()
     {
-        mouseHoverer.position = tileSelectorScript.TileSelected;
+        //mouseHoverer.position = tileSelectorScript.TileSelected;
         //Cursor.lockState = CursorLockMode.None;
         tileSelectorScript.enabled = true;
     }
