@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour
     public Transform mouseHoverer;
     private Vector3 lastMousePos, lastPosition;
     private float rotSpeed;
+    public string currentTileInfoString;
     
 
     void Start()
@@ -48,10 +49,10 @@ public class playerMovement : MonoBehaviour
         transform.rotation = targetRotation;
 
         lastPosition = transform.position;
+        currentTileInfoString = lastPosition.ToString();
 
 
-
-        if(!anim.GetBool("isWalking") && Input.GetKeyDown(KeyCode.F) && ((tileSelectorScript.TileSelected.z != transform.position.z) || (tileSelectorScript.TileSelected.x != transform.position.x)))
+        if (!anim.GetBool("isWalking") && Input.GetKeyDown(KeyCode.F) && ((tileSelectorScript.TileSelected.z != transform.position.z) || (tileSelectorScript.TileSelected.x != transform.position.x)))
         {
             anim.SetBool("isWalking", true);
         }

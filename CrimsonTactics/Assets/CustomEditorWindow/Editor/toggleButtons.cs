@@ -6,8 +6,8 @@ using UnityEditor;
 public class ToggleButtons : EditorWindow
 {
     private bool[,] buttonStates = new bool[10, 10];
-    private static GameObject[,] instantiatedTrees = new GameObject[10, 10]; // Keep track of instantiated trees
-    private static GameObject treePrefab; // Make it static for shared reference across all instances
+    private static GameObject[,] instantiatedTrees = new GameObject[10, 10]; 
+    private static GameObject treePrefab; 
 
     [MenuItem("Tools/Toggleable Buttons Editor")]
     public static void ShowWindow()
@@ -26,7 +26,7 @@ public class ToggleButtons : EditorWindow
 
         EditorGUILayout.Space();
 
-        // Allow dragging and dropping of tree prefab
+        // dragging and dropping of prefab
         DragAndDropObjectField();
 
         for (int i = 0; i < 10; i++)
@@ -38,7 +38,7 @@ public class ToggleButtons : EditorWindow
                 bool previousState = buttonStates[i, j];
                 buttonStates[i, j] = GUILayout.Toggle(buttonStates[i, j], "");
 
-                // Check if the button state has changed
+                
                 if (previousState != buttonStates[i, j])
                 {
                     HandleToggleChange(i, j);
@@ -53,12 +53,12 @@ public class ToggleButtons : EditorWindow
     {
         if (buttonStates[row, col])
         {
-            // Button is now toggled on
+            // Button on
             InstantiateTreeAtCube(row, col);
         }
         else
         {
-            // Button is now toggled off
+            // Button off
             DestroyTreeAtCube(row, col);
         }
     }
@@ -67,10 +67,10 @@ public class ToggleButtons : EditorWindow
     {
         if (treePrefab != null)
         {
-            // Check if a tree is already instantiated at this cube
+            
             if (instantiatedTrees[row, col] == null)
             {
-                // Assuming you have a CubeToggleScript attached to each cube
+                
                 GameObject cube = GameObject.Find("Cube" + (row+1) + "_" + (col+1));
 
                 if (cube != null)
@@ -79,16 +79,17 @@ public class ToggleButtons : EditorWindow
 
                     if (cubeScript != null)
                     {
-                        // Instantiate the tree prefab at the cube's position
-                        instantiatedTrees[row, col] = Instantiate(treePrefab, new Vector3(cube.transform.position.x,2f, cube.transform.position.z), Quaternion.identity);
+                        
+                        instantiatedTrees[row, col] = Instantiate(treePrefab, new Vector3(cube.transform.position.x,-2f, cube.transform.position.z), Quaternion.identity);
 
-                        // Mark the cube as toggled
+                        
                         cubeScript.isToggled = true;
                     }
                 }
             }
         }
         else
+            // to avoid null reference exception
         {
             Debug.LogWarning("Tree Prefab is not assigned. Please drag and drop a tree prefab.");
         }
@@ -96,10 +97,9 @@ public class ToggleButtons : EditorWindow
 
     private void DestroyTreeAtCube(int row, int col)
     {
-        // Check if a tree is instantiated at this cube
+        
         if (instantiatedTrees[row, col] != null)
         {
-            // Destroy the instantiated tree
             DestroyImmediate(instantiatedTrees[row, col]);
             instantiatedTrees[row, col] = null;
         }

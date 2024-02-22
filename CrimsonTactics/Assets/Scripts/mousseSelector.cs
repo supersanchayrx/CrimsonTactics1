@@ -11,6 +11,7 @@ public class mousseSelector : MonoBehaviour
     private Transform currentTile;
     public Vector3 TileSelected;
     public float rayDistance;
+    public string selectedTileInfoString;
 
     void Start()
     {
@@ -26,6 +27,8 @@ public class mousseSelector : MonoBehaviour
         {
 
             Transform tile = hitInfo.collider.transform;
+            Vector3 tempName = new Vector3(tile.position.x, tile.position.y, tile.position.z);
+            selectedTileInfoString = tempName.ToString();
 
             if (tile != currentTile)
             {
@@ -46,6 +49,9 @@ public class mousseSelector : MonoBehaviour
         }
 
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
+        
+
+         
     }
 
     void HighlightTile(Transform tile)
